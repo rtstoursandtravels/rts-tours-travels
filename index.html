@@ -1,320 +1,83 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="RTS Tours & Travels - Flight reservation assistance. Send your travel request directly on WhatsApp.">
-<title>RTS Tours & Travels | Flight Reservation</title>
-<style>
-:root{--navy:#10243a;--blue:#1769aa;--gold:#f4b942;--ink:#172536;--muted:#65758a;--bg:#f4f7fb;--white:#fff;--line:#dce4ee}
-*{box-sizing:border-box}body{margin:0;font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--ink)}
-header{background:var(--navy);color:#fff;padding:18px 20px}.nav{max-width:1050px;margin:auto;display:flex;justify-content:space-between;align-items:center;gap:12px}.brand{font-size:20px;font-weight:800;letter-spacing:.5px}.brand span{color:var(--gold)}.tag{font-size:12px;color:#d5e2ef;margin-top:4px}
-.hero{background:linear-gradient(120deg,#10243a,#174c78);color:#fff;padding:54px 20px 76px}.hero-inner{max-width:1050px;margin:auto}.eyebrow{color:#f8c968;font-size:12px;font-weight:bold;letter-spacing:1.5px;text-transform:uppercase}.hero h1{font-size:clamp(30px,5vw,48px);line-height:1.1;margin:12px 0}.hero p{max-width:620px;color:#d8e4f0;line-height:1.6;margin:0}
-main{max-width:1050px;margin:-42px auto 50px;padding:0 16px;display:grid;grid-template-columns:minmax(0,1.4fr) minmax(250px,.8fr);gap:20px;position:relative}
-.card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:24px;box-shadow:0 12px 35px rgba(16,36,58,.08)}h2{font-size:21px;margin:0 0 6px}.sub{color:var(--muted);font-size:13px;line-height:1.5;margin:0 0 20px}
-form{display:grid;grid-template-columns:1fr 1fr;gap:14px}.field{display:flex;flex-direction:column;gap:7px}.full{grid-column:1/-1}label{font-size:12px;font-weight:700;color:#42546a}input,select,textarea{width:100%;padding:12px 13px;border:1px solid #ccd7e3;border-radius:9px;font:inherit;font-size:14px;background:#fff;color:var(--ink)}input:focus,select:focus,textarea:focus{outline:2px solid #b8d9f5;border-color:var(--blue)}
-button,.button{border:0;border-radius:10px;padding:14px 18px;background:#16834a;color:white;font-weight:700;font-size:15px;cursor:pointer;text-decoration:none;text-align:center}.button:hover,button:hover{filter:brightness(.95)}.note{font-size:11px;color:var(--muted);line-height:1.5}.side h3{margin:0 0 12px;font-size:17px}.step{display:flex;gap:11px;margin:15px 0}.num{width:26px;height:26px;flex:0 0 26px;border-radius:50%;background:#e7f1fb;color:var(--blue);font-weight:800;display:grid;place-items:center;font-size:12px}.step strong{display:block;font-size:13px;margin-bottom:3px}.step span{font-size:12px;color:var(--muted);line-height:1.45}
-.payment-card{margin-top:18px}.payment-qr{display:block;width:100%;max-width:390px;margin:14px auto;border:1px solid var(--line);border-radius:12px}.upi-row{display:flex;gap:8px;align-items:center;flex-wrap:wrap;background:#f4f7fb;padding:10px;border-radius:9px;font-weight:700;word-break:break-all}.copy-btn{padding:10px 13px;font-size:13px;background:var(--navy)}.notice{background:#fff8e8;border:1px solid #f3dfae;border-radius:10px;padding:12px;font-size:12px;line-height:1.5;color:#6a4c13;margin-top:18px}
-.passenger-card{border:1px solid var(--line);border-radius:10px;padding:14px;margin:10px 0;background:#fbfdff}.passenger-card h3{font-size:15px;margin:0 0 12px}.passenger-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.passenger-card .field{margin-bottom:8px}.photo-preview{max-width:110px;max-height:110px;object-fit:contain;border:1px solid var(--line);border-radius:8px;margin-top:8px}.upload-help{font-size:11px;color:var(--muted);line-height:1.4}.auto-fill-btn{background:#1769aa;padding:10px 13px;font-size:13px;margin-top:9px}.ocr-status{font-size:12px;color:#1769aa;margin-top:7px;line-height:1.4}.privacy-note{background:#eef6ff;border:1px solid #cfe3f8;border-radius:8px;padding:9px;font-size:11px;line-height:1.45;color:#294d70;margin-top:8px}.mode-row{display:flex;gap:14px;flex-wrap:wrap;margin:8px 0}.mode-row label{font-weight:normal}@media(max-width:480px){.passenger-grid{grid-template-columns:1fr}}footer{text-align:center;color:var(--muted);font-size:12px;padding:22px 16px 35px}
-.thankyou{display:none;max-width:760px;margin:34px auto;padding:28px 22px;background:#fff;border:1px solid var(--line);border-radius:18px;box-shadow:0 12px 35px rgba(16,36,58,.08);text-align:center}.thankyou .check{width:62px;height:62px;margin:0 auto 16px;border-radius:50%;display:grid;place-items:center;background:#e6f7ed;color:#16834a;font-size:32px;font-weight:800}.thankyou h2{font-size:26px;margin-bottom:12px}.thankyou p{line-height:1.65;color:#42546a}.thankyou .wa-link{display:inline-block;margin-top:12px;background:#16834a;color:white;padding:14px 20px;border-radius:10px;text-decoration:none;font-weight:700}.thankyou .small-note{font-size:12px;color:var(--muted);margin-top:16px}
-@media(max-width:760px){main{grid-template-columns:1fr;margin-top:-34px}.hero{padding:42px 20px 65px}.card{padding:20px}}
-@media(max-width:480px){form{grid-template-columns:1fr}.full{grid-column:auto}.nav{align-items:flex-start;flex-direction:column}}
-</style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#092d68">
+<title>RTS Tours & Travels</title>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
-<header><div class="nav"><div><div class="brand">RTS <span>TOURS & TRAVELS</span></div><div class="tag">FLIGHT RESERVATION ASSISTANCE</div></div><div class="tag">WhatsApp order support</div></div></header>
-<section class="hero"><div class="hero-inner"><div class="eyebrow">Simple • Convenient • Personal assistance</div><h1>Request your flight reservation</h1><p>Share your travel details below. Our team will receive your request on WhatsApp and contact you to confirm availability, price and the next steps.</p></div></section>
+<header class="topbar">
+  <a href="#" class="wordmark" data-page="home"><b>RTS</b><small>TOURS &amp; TRAVELS</small></a>
+  <a class="wa-top" href="https://wa.me/919326685517" target="_blank" rel="noopener">WhatsApp</a>
+</header>
 <main>
-<section class="card">
-<h2>Reservation request</h2><p class="sub">Enter the passenger and journey details. Fields marked * are required.</p>
-<form id="bookingForm">
-<div class="field"><label for="trip">JOURNEY TYPE *</label><select id="trip" required><option value="One way">One way</option><option value="Return">Return</option></select></div>
-<div class="field full"><label>NUMBER OF PAX *</label>
-<div class="passenger-grid">
-  <div class="field"><label for="adultCount">ADULT (12+ YEARS)</label><select id="adultCount"><option value="1" selected>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option><option>9</option></select></div>
-  <div class="field"><label for="childCount">CHILD (2–11 YEARS)</label><select id="childCount"><option value="0" selected>0</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option><option>9</option></select></div>
-  <div class="field"><label for="infantCount">INFANT (UNDER 2 YEARS)</label><select id="infantCount"><option value="0" selected>0</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option><option>9</option></select></div>
-</div>
-<div class="note" id="paxTotal">Total passengers: 1</div>
-</div>
-<div class="field"><label for="from">DEPARTURE AIRPORT *</label><input id="from" list="airportCodes" placeholder="Search city, airport or code (e.g. BOM)" autocomplete="off" required></div>
-<div class="field"><label for="to">ARRIVAL AIRPORT *</label><input id="to" list="airportCodes" placeholder="Search city, airport or code (e.g. JED)" autocomplete="off" required></div>
-<datalist id="airportCodes">
-  <option value="Mumbai (BOM)"></option><option value="Delhi (DEL)"></option><option value="Bengaluru (BLR)"></option><option value="Chennai (MAA)"></option><option value="Hyderabad (HYD)"></option><option value="Kolkata (CCU)"></option><option value="Kochi (COK)"></option><option value="Thiruvananthapuram (TRV)"></option><option value="Kozhikode (CCJ)"></option><option value="Kannur (CNN)"></option><option value="Mangaluru (IXE)"></option><option value="Goa - Dabolim (GOI)"></option><option value="Goa - Mopa (GOX)"></option><option value="Ahmedabad (AMD)"></option><option value="Pune (PNQ)"></option><option value="Jaipur (JAI)"></option><option value="Lucknow (LKO)"></option><option value="Amritsar (ATQ)"></option><option value="Chandigarh (IXC)"></option><option value="Nagpur (NAG)"></option><option value="Surat (STV)"></option><option value="Varanasi (VNS)"></option><option value="Indore (IDR)"></option><option value="Bhopal (BHO)"></option><option value="Patna (PAT)"></option><option value="Guwahati (GAU)"></option><option value="Srinagar (SXR)"></option><option value="Jammu (IXJ)"></option><option value="Bagdogra (IXB)"></option><option value="Ranchi (IXR)"></option><option value="Raipur (RPR)"></option><option value="Visakhapatnam (VTZ)"></option><option value="Tiruchirappalli (TRZ)"></option><option value="Madurai (IXM)"></option><option value="Coimbatore (CJB)"></option><option value="Tirupati (TIR)"></option><option value="Vijayawada (VGA)"></option><option value="Rajkot (HSR)"></option><option value="Jodhpur (JDH)"></option><option value="Udaipur (UDR)"></option><option value="Dehradun (DED)"></option><option value="Aurangabad (IXU)"></option>
-  <option value="Jeddah (JED)"></option><option value="Riyadh (RUH)"></option><option value="Dammam (DMM)"></option><option value="Madinah (MED)"></option><option value="Taif (TIF)"></option><option value="Abha (AHB)"></option><option value="Dubai (DXB)"></option><option value="Sharjah (SHJ)"></option><option value="Abu Dhabi (AUH)"></option><option value="Doha (DOH)"></option><option value="Kuwait City (KWI)"></option><option value="Muscat (MCT)"></option><option value="Salalah (SLL)"></option><option value="Manama (BAH)"></option><option value="Istanbul (IST)"></option><option value="London Heathrow (LHR)"></option><option value="London Gatwick (LGW)"></option><option value="Paris CDG (CDG)"></option><option value="Frankfurt (FRA)"></option><option value="Amsterdam (AMS)"></option><option value="Singapore (SIN)"></option><option value="Kuala Lumpur (KUL)"></option><option value="Bangkok (BKK)"></option><option value="Colombo (CMB)"></option><option value="Kathmandu (KTM)"></option><option value="Dhaka (DAC)"></option><option value="New York JFK (JFK)"></option><option value="Toronto (YYZ)"></option><option value="Sydney (SYD)"></option>
-</datalist>
-<div class="field"><label for="depart">DESIRED DEPARTURE DATE & TIME *</label><input id="depart" type="datetime-local" required></div>
-<div class="field full"><label for="return">DESIRED RETURN DATE</label><input id="return" type="date"></div>
-<div class="field"><label for="visaDuration">VISA DURATION</label><select id="visaDuration"><option value="">Select visa duration</option><option>14 Days</option><option>30 Days</option><option>60 Days</option><option>90 Days</option><option>Other / Not sure</option></select></div>
-<div class="field full"><label>PASSENGER DETAILS</label><div id="passengerSections"></div><div class="note">Passenger forms appear separately for each adult, child and infant selected. Age categories are generally based on age on the travel date; airline rules may vary.</div></div>
-<div class="field"><label for="phone">YOUR WHATSAPP NUMBER *</label><input id="phone" type="tel" placeholder="e.g. 91XXXXXXXXXX" required></div>
-<div class="field full"><label for="email">EMAIL (OPTIONAL)</label><input id="email" type="email" placeholder="name@example.com"></div>
-<div class="field full"><label for="notes">ADDITIONAL DETAILS (OPTIONAL)</label><textarea id="notes" rows="3" placeholder="Any special request or preferred timing"></textarea></div>
-<div class="field full"><button type="submit">Send request on WhatsApp</button><div class="note">This sends your request to RTS Tours & Travels. It does not automatically book a flight or confirm a reservation.</div></div>
-</form>
-</section>
-<aside class="card side">
-<h3>How it works</h3>
-<div class="step"><div class="num">1</div><div><strong>Submit your request</strong><span>Tell us your route, dates and passenger details.</span></div></div>
-<div class="step"><div class="num">2</div><div><strong>We contact you</strong><span>We confirm service availability, price and processing time.</span></div></div>
-<div class="step"><div class="num">3</div><div><strong>Pay using UPI</strong><span>Use the UPI details shared by our team after the order is confirmed.</span></div></div>
-<div class="step"><div class="num">4</div><div><strong>Receive your document</strong><span>We send the genuine reservation document and explain its status and validity.</span></div></div>
-<div class="notice"><strong>Important:</strong> A request is not a confirmed booking. Payment should be made only after you receive and verify the order details and official payment instructions. We do not represent a reservation as an issued ticket.</div>
-</aside>
-<section class="card payment-card" style="grid-column:1/-1">
-<h2>UPI Payment</h2>
-<p class="sub">RTS Tours &amp; Travels payment QR. Scan using any UPI app.</p>
-<img class="payment-qr" src="payment-qr.jpg" alt="RTS Tours & Travels UPI payment QR code">
-<div class="field full">
-<label>UPI ID</label>
-<div class="upi-row"><span id="upiId">rtstoursandtravels@oksbi</span><button class="copy-btn" type="button" id="copyUpi">Copy UPI ID</button></div>
-</div>
-<p class="note">Bank shown on QR: Kotak Mahindra Bank.</p>
-<div class="notice"><strong>Payment safety:</strong> Please make payment only after RTS Tours &amp; Travels confirms the availability, amount and payment instructions for your request. A payment does not itself confirm a flight reservation or mean a ticket has been issued. Keep your UPI transaction reference (UTR) for verification.</div>
-</section>
+  <section class="page active" id="home">
+    <div class="stage" data-ratio="1.0">
+      <img src="home.png" alt="RTS Tours & Travels – Our Travel Services">
+      <button class="hotspot" style="left:4%;top:24%;width:31%;height:29%" data-page="purpose" aria-label="Return Cancellation Ticket"></button>
+      <button class="hotspot" style="left:37%;top:24%;width:30%;height:29%" data-page="hotel" aria-label="Hotel Booking"></button>
+    </div>
+  </section>
+
+  <section class="page" id="purpose">
+    <div class="stage" data-ratio="0.9140625">
+      <img src="purpose.png" alt="Dummy Ticket / Return Cancellation Ticket – Purpose">
+      <button class="hotspot" style="left:3%;top:45%;width:47%;height:27%" data-page="travel" aria-label="Travel purpose"></button>
+      <button class="hotspot" style="left:51%;top:45%;width:46%;height:27%" data-page="visa" aria-label="Visa purpose"></button>
+      <button class="hotspot" style="left:24%;top:79%;width:53%;height:12%" data-page="travel" aria-label="Request now"></button>
+    </div>
+  </section>
+
+  <section class="page" id="travel">
+    <div class="stage form-stage" data-ratio="0.9140625">
+      <img src="travel.png" alt="Travel request form">
+      <button class="back-hotspot" style="left:2%;top:3%;width:8%;height:6%" data-page="purpose" aria-label="Back"></button>
+      <form id="travel-form" class="overlay-form">
+        <input aria-label="Departure sector" name="departure" placeholder="Enter Departure Sector (e.g. BOM)" required style="left:6.5%;top:43.6%;width:43%;height:5.2%">
+        <input aria-label="Arrival sector" name="arrival" placeholder="Enter Arrival Sector (e.g. DXB)" required style="left:53.5%;top:43.6%;width:41%;height:5.2%">
+        <select aria-label="Number of passengers" name="pax" required style="left:6.5%;top:52.1%;width:43%;height:5.2%"></select>
+        <input aria-label="WhatsApp number" name="customerWhatsApp" type="tel" placeholder="Enter WhatsApp Number" required style="left:53.5%;top:52.1%;width:41%;height:5.2%">
+        <textarea aria-label="Additional details" name="details" placeholder="Fill here..." style="left:6.5%;top:60.5%;width:88%;height:9.5%"></textarea>
+        <button class="submit-hotspot" type="submit" aria-label="Submit request" style="left:26%;top:73%;width:48%;height:7.5%"></button>
+      </form>
+    </div>
+  </section>
+
+  <section class="page" id="visa">
+    <div class="stage form-stage" data-ratio="0.9140625">
+      <img src="visa.png" alt="Visa purpose request form">
+      <button class="back-hotspot" style="left:2%;top:3%;width:8%;height:6%" data-page="purpose" aria-label="Back"></button>
+      <form id="visa-form" class="overlay-form">
+        <input aria-label="Departure sector" name="departure" placeholder="Select Departure Sector" required style="left:6%;top:39.5%;width:43%;height:5.5%">
+        <input aria-label="Arrival sector" name="arrival" placeholder="Select Arrival Sector" required style="left:53%;top:39.5%;width:41%;height:5.5%">
+        <select aria-label="Number of passengers" name="pax" required style="left:6%;top:48.5%;width:43%;height:5.5%"></select>
+        <input aria-label="Date of travel" name="travelDate" type="date" required style="left:53%;top:48.5%;width:41%;height:5.5%">
+        <textarea aria-label="Additional details" name="details" placeholder="Fill here..." style="left:6%;top:57.5%;width:88%;height:10%"></textarea>
+        <button class="submit-hotspot" type="submit" aria-label="Submit request" style="left:26%;top:72%;width:48%;height:7.5%"></button>
+      </form>
+    </div>
+  </section>
+
+  <section class="page" id="hotel">
+    <div class="stage form-stage" data-ratio="0.9140625">
+      <img src="hotel.png" alt="Hotel booking request form">
+      <button class="back-hotspot" style="left:2%;top:3%;width:8%;height:6%" data-page="home" aria-label="Back"></button>
+      <form id="hotel-form" class="overlay-form">
+        <input aria-label="Country name" name="country" placeholder="Select Country" required style="left:6%;top:38.8%;width:43%;height:4.8%">
+        <input aria-label="City" name="city" placeholder="Select City" required style="left:53%;top:38.8%;width:41%;height:4.8%">
+        <input aria-label="Check-in date" name="checkin" type="date" required style="left:6%;top:48%;width:43%;height:4.8%">
+        <input aria-label="Check-out date" name="checkout" type="date" required style="left:53%;top:48%;width:41%;height:4.8%">
+        <select aria-label="Number of passengers" name="pax" id="hotel-pax" required style="left:6%;top:57.3%;width:43%;height:4.8%"></select>
+        <div id="passenger-overlay" class="passenger-overlay"></div>
+        <textarea aria-label="Additional details" name="details" placeholder="Fill here..." style="left:6%;top:77%;width:88%;height:8%"></textarea>
+        <button class="submit-hotspot" type="submit" aria-label="Send request" style="left:26%;top:89%;width:48%;height:7%"></button>
+      </form>
+    </div>
+  </section>
 </main>
-<section class="thankyou" id="thankYouPage" aria-live="polite">
-  <div class="check">✓</div>
-  <h2>Thank you! Your request has been received.</h2>
-  <p>Our team will process your request and aim to send your ticket within <strong>30 minutes</strong>, depending on your flight timing, availability and processing requirements.</p>
-  <p>Please wait for our confirmation. For updates or assistance, contact RTS Tours &amp; Travels on WhatsApp.</p>
-  <a class="wa-link" id="thankYouWhatsApp" href="https://wa.me/919326685517" target="_blank" rel="noopener">Contact us on WhatsApp: +91 93266 85517</a>
-</section>
-<footer>© <span id="year"></span> RTS Tours & Travels. All rights reserved.<br>Contact details and business policies will be added before publishing.</footer>
-<script>
-/* RTS Tours & Travels WhatsApp Business number. */
-const BUSINESS_WHATSAPP_NUMBER = "919326685517";
-const passengerSections = document.getElementById("passengerSections");
-const countFields = {
-  Adult: document.getElementById("adultCount"),
-  Child: document.getElementById("childCount"),
-  Infant: document.getElementById("infantCount")
-};
-const ageLabels = {
-  Adult: "12+ years",
-  Child: "2–11 years",
-  Infant: "under 2 years"
-};
-
-function getPassengerGroups() {
-  return Object.entries(countFields).map(([type, field]) => ({
-    type, count: Number(field.value || 0)
-  }));
-}
-
-function renderPassengerSections() {
-  const groups = getPassengerGroups();
-  const total = groups.reduce((sum, group) => sum + group.count, 0);
-  document.getElementById("paxTotal").textContent = "Total passengers: " + total;
-  passengerSections.innerHTML = "";
-  let globalIndex = 0;
-
-  groups.forEach(group => {
-    for (let i = 1; i <= group.count; i++) {
-      globalIndex++;
-      const key = globalIndex;
-      const card = document.createElement("section");
-      card.className = "passenger-card";
-      card.dataset.passengerType = group.type;
-      card.innerHTML = `
-        <h3>${group.type.toUpperCase()} ${i} (${ageLabels[group.type]})</h3>
-        <div class="mode-row">
-          <label><input type="radio" name="passengerMode${key}" value="photo" checked> Upload passport photo</label>
-          <label><input type="radio" name="passengerMode${key}" value="manual"> Fill details manually</label>
-        </div>
-        <div id="photoMode${key}">
-          <div class="field">
-            <label for="passportPhoto${key}">PASSPORT PHOTO (JPG / JPEG / PNG)</label>
-            <input id="passportPhoto${key}" type="file" accept="image/jpeg,image/png">
-            <div class="upload-help">Choose a passport photo from your phone gallery or take a new photo. JPG / JPEG / PNG only; less than 1 MB. PDF is not accepted.</div>
-            <div id="photoPreview${key}"></div>
-            <button class="auto-fill-btn" type="button" id="autoFill${key}" disabled>Auto-fill details from passport</button>
-            <div class="ocr-status" id="ocrStatus${key}" aria-live="polite"></div>
-            <div class="privacy-note">Auto-fill reads the passport image in your browser. The image is not uploaded to this website. Check every extracted field against the passport before submitting. The reader checks both the printed passport fields and the machine-readable zone, including issue date where readable. OCR can misread characters or dates; verify every field before submitting.</div>
-          </div>
-        </div>
-        <div id="manualMode${key}" style="display:none">
-          <div class="passenger-grid">
-            <div class="field"><label for="title${key}">TITLE</label><select id="title${key}"><option>Mr</option><option>Mrs</option><option>Ms</option><option>Miss</option><option>Master</option></select></div>
-            <div class="field"><label for="dob${key}">DATE OF BIRTH</label><input id="dob${key}" type="date"></div>
-            <div class="field"><label for="first${key}">FIRST NAME</label><input id="first${key}" placeholder="As per passport"></div>
-            <div class="field"><label for="last${key}">LAST NAME</label><input id="last${key}" placeholder="As per passport"></div>
-            <div class="field"><label for="nationality${key}">NATIONALITY</label><input id="nationality${key}" placeholder="Nationality"></div>
-            <div class="field"><label for="passport${key}">PASSPORT NUMBER</label><input id="passport${key}" placeholder="Passport number"></div>
-            <div class="field"><label for="issue${key}">PASSPORT ISSUE DATE</label><input id="issue${key}" type="date"></div>
-            <div class="field"><label for="expiry${key}">PASSPORT EXPIRY DATE</label><input id="expiry${key}" type="date"></div>
-          </div>
-        </div>`;
-      passengerSections.appendChild(card);
-
-      card.querySelectorAll(`input[name="passengerMode${key}"]`).forEach(radio => {
-        radio.addEventListener("change", () => {
-          const manual = card.querySelector(`input[name="passengerMode${key}"]:checked`).value === "manual";
-          card.querySelector(`#photoMode${key}`).style.display = manual ? "none" : "block";
-          card.querySelector(`#manualMode${key}`).style.display = manual ? "block" : "none";
-        });
-      });
-
-      const photoInput = card.querySelector(`#passportPhoto${key}`);
-      photoInput.addEventListener("change", () => {
-        const preview = card.querySelector(`#photoPreview${key}`);
-        preview.innerHTML = "";
-        const file = photoInput.files && photoInput.files[0];
-        if (!file) return;
-        if (!["image/jpeg", "image/png"].includes(file.type)) {
-          alert("Please upload a JPG, JPEG or PNG passport photo only.");
-          photoInput.value = "";
-          return;
-        }
-        if (file.size >= 1024 * 1024) {
-          alert("Passport photo must be less than 1 MB.");
-          photoInput.value = "";
-          return;
-        }
-        const img = document.createElement("img");
-        img.className = "photo-preview";
-        img.alt = "Passport photo preview";
-        img.src = URL.createObjectURL(file);
-        preview.appendChild(img);
-        card.querySelector(`#autoFill${key}`).disabled = false;
-        card.querySelector(`#ocrStatus${key}`).textContent = "Passport photo selected. You can try automatic reading, or enter details manually.";
-      });
-
-      card.querySelector(`#autoFill${key}`).addEventListener("click", async () => {
-        const file = photoInput.files && photoInput.files[0];
-        const status = card.querySelector(`#ocrStatus${key}`);
-        if (!file) { alert("Please choose a passport photo first."); return; }
-        const autoButton = card.querySelector(`#autoFill${key}`);
-        autoButton.disabled = true;
-        status.textContent = "Reading passport locally in your browser. This may take a little time...";
-        try {
-          if (!window.Tesseract) {
-            await new Promise((resolve, reject) => {
-              const script = document.createElement("script");
-              script.src = "https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js";
-              script.onload = resolve;
-              script.onerror = () => reject(new Error("Could not load the text-reading tool. Check your internet connection and try again."));
-              document.head.appendChild(script);
-            });
-          }
-          const result = await Tesseract.recognize(file, "eng", { logger: m => { if (m.status === "recognizing text" && m.progress) status.textContent = `Reading passport… ${Math.round(m.progress*100)}%`; } });
-          const printedText = (result.data.text || "").toUpperCase();
-          const raw = printedText.replace(/[|]/g, "I");
-          const mrzLines = raw.split(/\n/).map(line => line.replace(/[^A-Z0-9<]/g, "")).filter(line => line.length >= 30);
-          let mrz = null;
-          for (let i = 0; i < mrzLines.length - 1; i++) {
-            const a = mrzLines[i], b = mrzLines[i+1];
-            if (a.startsWith("P") && b.length >= 25) { mrz = [a, b]; break; }
-          }
-          if (!mrz) throw new Error("Could not clearly read the passport machine-readable lines. Try a sharp, straight photo with the two lines at the bottom visible, or fill the details manually.");
-          const line1 = mrz[0].padEnd(44, "<").slice(0,44);
-          const line2 = mrz[1].padEnd(44, "<").slice(0,44);
-          const namePart = line1.slice(5).split("<<");
-          const surname = (namePart[0] || "").replace(/</g, " ").trim();
-          const given = (namePart[1] || "").replace(/</g, " ").trim();
-          const passportNo = line2.slice(0,9).replace(/</g, "").replace(/O/g,"0");
-          const nationality = line2.slice(10,13).replace(/</g, "");
-          const dobRaw = line2.slice(13,19);
-          const expiryRaw = line2.slice(21,27);
-          const toDate = (v) => /^\d{6}$/.test(v) ? `${Number(v.slice(0,2)) > 30 ? "19" : "20"}${v.slice(0,2)}-${v.slice(2,4)}-${v.slice(4,6)}` : "";
-          const setValue = (id, value) => { if (value) card.querySelector(`#${id}${key}`).value = value; };
-          // Read visible passport labels as well as MRZ. The MRZ is the more reliable source for names, number, DOB and expiry.
-          const dateToInput = (v) => {
-            const m = v.match(/\b(\d{1,2})[\s./-]+([A-Z]{3}|\d{1,2})[\s./-]+(\d{2,4})\b/);
-            if (!m) return "";
-            const months = {JAN:"01",FEB:"02",MAR:"03",APR:"04",MAY:"05",JUN:"06",JUL:"07",AUG:"08",SEP:"09",OCT:"10",NOV:"11",DEC:"12"};
-            const mm = months[m[2]] || String(m[2]).padStart(2,"0");
-            let yy = m[3]; if (yy.length===2) yy = (Number(yy)>30?"19":"20")+yy;
-            return `${yy}-${mm}-${String(m[1]).padStart(2,"0")}`;
-          };
-          const findLabeledDate = (labels) => {
-            for (const label of labels) {
-              const re = new RegExp(label + "\\s*[:#-]?\\s*([0-9]{1,2}[\\s./-]+(?:[A-Z]{3}|[0-9]{1,2})[\\s./-]+[0-9]{2,4})", "i");
-              const match = printedText.match(re); if (match) return dateToInput(match[1]);
-            }
-            return "";
-          };
-          const issueDate = findLabeledDate(["DATE OF ISSUE","DATE OF ISSUANCE","ISSUE DATE","DATE OF ISSUE OF PASSPORT"]);
-          const dobPrinted = findLabeledDate(["DATE OF BIRTH","BIRTH DATE"]);
-          const expiryPrinted = findLabeledDate(["DATE OF EXPIRY","DATE OF EXPIRATION","EXPIRY DATE"]);
-          setValue("last", surname);
-          setValue("first", given);
-          setValue("passport", passportNo);
-          setValue("nationality", nationality);
-          setValue("dob", toDate(dobRaw) || dobPrinted);
-          setValue("expiry", toDate(expiryRaw) || expiryPrinted);
-          setValue("issue", issueDate);
-          card.querySelector(`input[name="passengerMode${key}"][value="manual"]`).checked = true;
-          card.querySelector(`#photoMode${key}`).style.display = "none";
-          card.querySelector(`#manualMode${key}`).style.display = "block";
-          status.textContent = `Passport scan completed. Extracted name, passport number, nationality, DOB and expiry from the MRZ; issue date ${issueDate ? "was also detected from the printed fields" : "could not be confidently detected"}. Verify every field against the document and correct any errors before submitting.`;
-        } catch (err) {
-          status.textContent = err.message || "Automatic reading failed. Please enter the details manually.";
-        } finally {
-          autoButton.disabled = false;
-        }
-      });
-    }
-  });
-}
-
-Object.values(countFields).forEach(field => field.addEventListener("change", renderPassengerSections));
-renderPassengerSections();
-
-document.getElementById("year").textContent = new Date().getFullYear();
-document.getElementById("copyUpi").addEventListener("click", async () => {
-  const upi = document.getElementById("upiId").textContent;
-  try { await navigator.clipboard.writeText(upi); alert("UPI ID copied: " + upi); }
-  catch (err) { window.prompt("Copy this UPI ID:", upi); }
-});
-document.getElementById("bookingForm").addEventListener("submit", (e) => {
-  e.preventDefault();
-  if (BUSINESS_WHATSAPP_NUMBER.includes("REPLACE")) {
-    alert("Website setup is not complete yet. Add your RTS WhatsApp Business number before using the order button.");
-    return;
-  }
-
-  const lines = [];
-  let globalIndex = 0;
-  getPassengerGroups().forEach(group => {
-    for (let i = 1; i <= group.count; i++) {
-      globalIndex++;
-      const key = globalIndex;
-      const mode = document.querySelector(`input[name="passengerMode${key}"]:checked`).value;
-      if (mode === "manual") {
-        lines.push(`${group.type} ${i}: ${document.getElementById(`title${key}`).value} ${document.getElementById(`first${key}`).value} ${document.getElementById(`last${key}`).value}; DOB ${document.getElementById(`dob${key}`).value}; Nationality ${document.getElementById(`nationality${key}`).value}; Passport ${document.getElementById(`passport${key}`).value}; Issue ${document.getElementById(`issue${key}`).value}; Expiry ${document.getElementById(`expiry${key}`).value}`);
-      } else {
-        const file = document.getElementById(`passportPhoto${key}`).files[0];
-        lines.push(`${group.type} ${i}: passport photo ${file ? "selected (" + file.name + ")" : "not selected"}`);
-      }
-    }
-  });
-
-  const counts = getPassengerGroups().map(g => `${g.type}: ${g.count}`).join(", ");
-  const total = getPassengerGroups().reduce((sum, g) => sum + g.count, 0);
-  const msg = [
-    "Hello RTS Tours & Travels, I want to request a flight reservation.",
-    "Journey: " + document.getElementById("trip").value,
-    "From: " + document.getElementById("from").value,
-    "To: " + document.getElementById("to").value,
-    "Departure date & time: " + document.getElementById("depart").value,
-    "Desired return date: " + document.getElementById("return").value,
-    "Visa duration: " + document.getElementById("visaDuration").value,
-    "Passenger counts: " + counts,
-    "Total passengers: " + total,
-    ...lines,
-    "Contact WhatsApp: " + document.getElementById("phone").value,
-    "Please confirm price and reservation details before payment."
-  ].join("\n");
-
-  alert("WhatsApp will open with your request summary. Passport photo files are not attached by this basic website; secure file upload/storage must be added before collecting passport images online.");
-  const waWindow = window.open("https://wa.me/" + BUSINESS_WHATSAPP_NUMBER + "?text=" + encodeURIComponent(msg), "_blank");
-  document.querySelector("main").style.display = "none";
-  document.querySelector(".hero").style.display = "none";
-  document.getElementById("thankYouPage").style.display = "block";
-  document.getElementById("thankYouWhatsApp").href = "https://wa.me/" + BUSINESS_WHATSAPP_NUMBER;
-  window.scrollTo({top: 0, behavior: "smooth"});
-});
-</script>
+<footer>RTS TOURS &amp; TRAVELS · WhatsApp +91 93266 85517</footer>
+<script src="script.js"></script>
 </body>
 </html>

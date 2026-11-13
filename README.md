@@ -1,13 +1,20 @@
-# RTS Tours & Travels website
+# Travel Services Website — GitHub Pages
 
-## Upload to GitHub
-1. Open your `rts-tours-travels` repository.
-2. Choose **Add file → Upload files**.
-3. Extract this ZIP on your phone/computer first.
-4. Upload `index.html`, `style.css`, `script.js`, and all five PNG image files.
-5. Commit changes.
+## Upload
+1. Extract this ZIP.
+2. Upload **all files and the `assets` folder contents** to the root of your GitHub repository.
+3. Replace the old `index.html`, `style.css`, and `script.js`.
+4. Commit changes. GitHub Pages will publish the update.
 
-## Preview with GitHub Pages
-Repository → Settings → Pages → Deploy from a branch → `main` → `/ (root)` → Save.
+## Included
+- Separate full-page screens: Home, Purpose, Airport/Immigration request, Visa/Office request, Hotel Booking.
+- Clickable service cards and browser back/forward navigation.
+- Responsive mobile layout; fields stay outside images, so text does not overlap artwork.
+- No RTS logo or RTS branding.
+- Displayed starting rates: Airport/Immigration ₹299, Visa/Office ₹249, Hotel ₹149.
+- WhatsApp request submission to +91 93266 85517.
+- Hotel guest names expand according to passenger count (Title, Given Name, Surname).
+- Date validation and required-field validation.
 
-This is a static front-end preview. There is NO payment page, payment gateway, or displayed rate. Form submit buttons open WhatsApp directly to +91 93266 85517 with the entered details. Customer login, paid checkout, secure order storage and admin document delivery are not included yet and need a backend/payment integration before launch.
+## Important
+Requests are sent for genuine, verifiable itineraries/reservations only. This website does not generate forged tickets or guarantee immigration/visa acceptance.

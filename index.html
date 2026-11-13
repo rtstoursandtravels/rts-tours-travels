@@ -1,83 +1,173 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#092d68">
-<title>RTS Tours & Travels</title>
-<link rel="stylesheet" href="style.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#082f70">
+  <meta name="description" content="Travel itinerary and hotel booking request services.">
+  <title>Travel Services | Request Online</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 <header class="topbar">
-  <a href="#" class="wordmark" data-page="home"><b>RTS</b><small>TOURS &amp; TRAVELS</small></a>
-  <a class="wa-top" href="https://wa.me/919326685517" target="_blank" rel="noopener">WhatsApp</a>
+  <a class="brand" href="#home" aria-label="Travel Services home"><span class="brand-mark">✈</span><span>TRAVEL <b>SERVICES</b></span></a>
+  <a class="whatsapp-top" href="https://wa.me/919326685517" target="_blank" rel="noopener">☏ <span>WhatsApp</span></a>
 </header>
-<main>
-  <section class="page active" id="home">
-    <div class="stage" data-ratio="1.0">
-      <img src="home.png" alt="RTS Tours & Travels – Our Travel Services">
-      <button class="hotspot" style="left:4%;top:24%;width:31%;height:29%" data-page="purpose" aria-label="Return Cancellation Ticket"></button>
-      <button class="hotspot" style="left:37%;top:24%;width:30%;height:29%" data-page="hotel" aria-label="Hotel Booking"></button>
+
+<main id="app">
+  <section class="page active" id="home" aria-label="Our Travel Services">
+    <div class="hero home-hero">
+      <div class="hero-copy">
+        <span class="eyebrow">SIMPLE · QUICK · ONLINE</span>
+        <h1>Our Travel <em>Services</em></h1>
+        <p>Choose a service and send your request.</p>
+      </div>
+      <div class="hero-visual"><span>✈</span><span>☁</span><span>🧳</span></div>
     </div>
+
+    <section class="content-wrap">
+      <div class="section-heading"><span>Explore Services</span><small>Tap a service to continue</small></div>
+      <div class="service-grid">
+        <button class="service-card" data-go="purpose" type="button">
+          <span class="service-icon ticket-icon">✈</span>
+          <span class="service-name">Dummy Ticket / Return Cancellation Ticket</span>
+          <span class="starting">STARTING FROM</span><strong class="price">₹299</strong>
+          <span class="card-link">Choose purpose <b>→</b></span>
+        </button>
+        <button class="service-card" data-go="hotel" type="button">
+          <span class="service-icon hotel-icon">▦</span>
+          <span class="service-name">Hotel Booking</span>
+          <span class="starting">STARTING FROM</span><strong class="price">₹149</strong>
+          <span class="card-link">Book hotel <b>→</b></span>
+        </button>
+        <div class="service-card disabled-card" aria-disabled="true">
+          <span class="service-icon bag-icon">🧳</span>
+          <span class="service-name">Other Travel Services</span>
+          <span class="coming">Coming Soon</span>
+        </div>
+      </div>
+      <p class="note">Prices are starting rates and may vary by route, date and service requirements.</p>
+    </section>
   </section>
 
-  <section class="page" id="purpose">
-    <div class="stage" data-ratio="0.9140625">
-      <img src="purpose.png" alt="Dummy Ticket / Return Cancellation Ticket – Purpose">
-      <button class="hotspot" style="left:3%;top:45%;width:47%;height:27%" data-page="travel" aria-label="Travel purpose"></button>
-      <button class="hotspot" style="left:51%;top:45%;width:46%;height:27%" data-page="visa" aria-label="Visa purpose"></button>
-      <button class="hotspot" style="left:24%;top:79%;width:53%;height:12%" data-page="travel" aria-label="Request now"></button>
+  <section class="page" id="purpose" aria-label="Choose dummy ticket purpose">
+    <div class="hero purpose-hero">
+      <button class="back-button" data-go="home" type="button" aria-label="Back to services">←</button>
+      <div class="hero-copy">
+        <span class="eyebrow">DUMMY TICKET / RETURN CANCELLATION</span>
+        <h1>Select Your <em>Purpose</em></h1>
+        <p>Choose the correct purpose for your request.</p>
+      </div>
+      <div class="hero-visual"><span>✈</span><span>▤</span></div>
     </div>
+    <section class="content-wrap purpose-wrap">
+      <div class="section-heading"><span>Purpose</span><small>Select one option</small></div>
+      <div class="purpose-grid">
+        <button class="purpose-card" data-go="travel" type="button">
+          <img src="assets/airport-banner.jpg" alt="" class="purpose-image">
+          <span class="purpose-icon">✈</span>
+          <span class="purpose-title">Travel Purpose</span>
+          <span class="purpose-desc">Show in Immigration / Airport Counter</span>
+          <span class="purpose-price">Starting from ₹299</span>
+          <span class="card-link">Request now <b>→</b></span>
+        </button>
+        <button class="purpose-card" data-go="visa" type="button">
+          <div class="purpose-image visa-art-panel" aria-hidden="true">▤　◎</div>
+          <span class="purpose-icon orange-icon">▤</span>
+          <span class="purpose-title">Visa / Office Purpose</span>
+          <span class="purpose-desc">Company Show Purpose</span>
+          <span class="purpose-price">Starting from ₹249</span>
+          <span class="card-link">Request now <b>→</b></span>
+        </button>
+      </div>
+    </section>
   </section>
 
-  <section class="page" id="travel">
-    <div class="stage form-stage" data-ratio="0.9140625">
-      <img src="travel.png" alt="Travel request form">
-      <button class="back-hotspot" style="left:2%;top:3%;width:8%;height:6%" data-page="purpose" aria-label="Back"></button>
-      <form id="travel-form" class="overlay-form">
-        <input aria-label="Departure sector" name="departure" placeholder="Enter Departure Sector (e.g. BOM)" required style="left:6.5%;top:43.6%;width:43%;height:5.2%">
-        <input aria-label="Arrival sector" name="arrival" placeholder="Enter Arrival Sector (e.g. DXB)" required style="left:53.5%;top:43.6%;width:41%;height:5.2%">
-        <select aria-label="Number of passengers" name="pax" required style="left:6.5%;top:52.1%;width:43%;height:5.2%"></select>
-        <input aria-label="WhatsApp number" name="customerWhatsApp" type="tel" placeholder="Enter WhatsApp Number" required style="left:53.5%;top:52.1%;width:41%;height:5.2%">
-        <textarea aria-label="Additional details" name="details" placeholder="Fill here..." style="left:6.5%;top:60.5%;width:88%;height:9.5%"></textarea>
-        <button class="submit-hotspot" type="submit" aria-label="Submit request" style="left:26%;top:73%;width:48%;height:7.5%"></button>
+  <section class="page form-page" id="travel" aria-label="Airport and immigration dummy ticket request">
+    <div class="form-hero airport-form-hero">
+      <button class="back-button" data-go="purpose" type="button" aria-label="Back">←</button>
+      <div class="form-hero-copy">
+        <span class="eyebrow">TRAVEL PURPOSE · FROM ₹299</span>
+        <h1>Dummy Ticket / <span>Return Cancellation Ticket</span></h1>
+        <p>Travel — Show in Immigration / Airport Counter</p>
+      </div>
+    </div>
+    <section class="form-wrap">
+      <div class="form-title"><span>✈</span><div><h2>Fill Your Request</h2><p>Enter your onward flight details</p></div></div>
+      <form id="travel-form">
+        <div class="section-strip">✈ &nbsp; Onward Details – Going Flight Details</div>
+        <div class="field-grid">
+          <label>Departure Sector <b>*</b><input name="Departure Sector" list="airport-codes" placeholder="Enter Departure Sector (e.g. BOM)" required></label>
+          <label>Arrival Sector <b>*</b><input name="Arrival Sector" list="airport-codes" placeholder="Enter Arrival Sector (e.g. DXB)" required></label>
+          <label>Number of Pax <b>*</b><select name="Number of Pax" class="pax-select" required><option value="">Select Number of Passengers</option></select></label>
+          <label>Date of Travel <b>*</b><input name="Date of Travel" type="date" required></label>
+          <label class="full-field">WhatsApp Number <b>*</b><input name="WhatsApp Number" type="tel" inputmode="tel" pattern="[0-9+() -]{8,18}" placeholder="Enter WhatsApp Number" required></label>
+          <label class="full-field">Additional Details<textarea name="Additional Details" rows="4" placeholder="Fill here..."></textarea></label>
+        </div>
+        <button class="submit" type="submit">➤ &nbsp; Submit Request on WhatsApp</button>
       </form>
-    </div>
+    </section>
   </section>
 
-  <section class="page" id="visa">
-    <div class="stage form-stage" data-ratio="0.9140625">
-      <img src="visa.png" alt="Visa purpose request form">
-      <button class="back-hotspot" style="left:2%;top:3%;width:8%;height:6%" data-page="purpose" aria-label="Back"></button>
-      <form id="visa-form" class="overlay-form">
-        <input aria-label="Departure sector" name="departure" placeholder="Select Departure Sector" required style="left:6%;top:39.5%;width:43%;height:5.5%">
-        <input aria-label="Arrival sector" name="arrival" placeholder="Select Arrival Sector" required style="left:53%;top:39.5%;width:41%;height:5.5%">
-        <select aria-label="Number of passengers" name="pax" required style="left:6%;top:48.5%;width:43%;height:5.5%"></select>
-        <input aria-label="Date of travel" name="travelDate" type="date" required style="left:53%;top:48.5%;width:41%;height:5.5%">
-        <textarea aria-label="Additional details" name="details" placeholder="Fill here..." style="left:6%;top:57.5%;width:88%;height:10%"></textarea>
-        <button class="submit-hotspot" type="submit" aria-label="Submit request" style="left:26%;top:72%;width:48%;height:7.5%"></button>
-      </form>
+  <section class="page form-page" id="visa" aria-label="Visa and office purpose request">
+    <div class="form-hero visa-form-hero">
+      <button class="back-button" data-go="purpose" type="button" aria-label="Back">←</button>
+      <div class="form-hero-copy">
+        <span class="eyebrow">VISA / OFFICE PURPOSE · FROM ₹249</span>
+        <h1>Dummy Ticket / <span>Return Cancellation Ticket</span></h1>
+        <p>Visa Purpose — Company Show Purpose</p>
+      </div>
     </div>
+    <section class="form-wrap">
+      <div class="form-title"><span>▤</span><div><h2>Fill Your Request</h2><p>Enter your travel details</p></div></div>
+      <form id="visa-form">
+        <div class="field-grid">
+          <label>Departure Sector <b>*</b><input name="Departure Sector" list="airport-codes" placeholder="Select Departure Sector" required></label>
+          <label>Arrival Sector <b>*</b><input name="Arrival Sector" list="airport-codes" placeholder="Select Arrival Sector" required></label>
+          <label>Number of Pax <b>*</b><select name="Number of Pax" class="pax-select" required><option value="">Select Number of Passengers</option></select></label>
+          <label>Date of Travel <b>*</b><input name="Date of Travel" type="date" required></label>
+          <label class="full-field">Additional Details<textarea name="Additional Details" rows="4" placeholder="Fill here..."></textarea></label>
+        </div>
+        <button class="submit" type="submit">➤ &nbsp; Submit Request on WhatsApp</button>
+      </form>
+    </section>
   </section>
 
-  <section class="page" id="hotel">
-    <div class="stage form-stage" data-ratio="0.9140625">
-      <img src="hotel.png" alt="Hotel booking request form">
-      <button class="back-hotspot" style="left:2%;top:3%;width:8%;height:6%" data-page="home" aria-label="Back"></button>
-      <form id="hotel-form" class="overlay-form">
-        <input aria-label="Country name" name="country" placeholder="Select Country" required style="left:6%;top:38.8%;width:43%;height:4.8%">
-        <input aria-label="City" name="city" placeholder="Select City" required style="left:53%;top:38.8%;width:41%;height:4.8%">
-        <input aria-label="Check-in date" name="checkin" type="date" required style="left:6%;top:48%;width:43%;height:4.8%">
-        <input aria-label="Check-out date" name="checkout" type="date" required style="left:53%;top:48%;width:41%;height:4.8%">
-        <select aria-label="Number of passengers" name="pax" id="hotel-pax" required style="left:6%;top:57.3%;width:43%;height:4.8%"></select>
-        <div id="passenger-overlay" class="passenger-overlay"></div>
-        <textarea aria-label="Additional details" name="details" placeholder="Fill here..." style="left:6%;top:77%;width:88%;height:8%"></textarea>
-        <button class="submit-hotspot" type="submit" aria-label="Send request" style="left:26%;top:89%;width:48%;height:7%"></button>
-      </form>
+  <section class="page form-page" id="hotel" aria-label="Hotel booking request">
+    <div class="form-hero hotel-form-hero">
+      <button class="back-button" data-go="home" type="button" aria-label="Back">←</button>
+      <div class="form-hero-copy">
+        <span class="eyebrow">HOTEL BOOKING · FROM ₹149</span>
+        <h1>Hotel <span>Booking</span></h1>
+        <p>Share your stay details and passenger names.</p>
+      </div>
     </div>
+    <section class="form-wrap">
+      <div class="form-title"><span>▦</span><div><h2>Fill Your Request</h2><p>Enter hotel and guest details</p></div></div>
+      <form id="hotel-form">
+        <div class="field-grid">
+          <label>Country Name <b>*</b><input name="Country Name" placeholder="Enter Country" required></label>
+          <label>City <b>*</b><input name="City" placeholder="Enter City" required></label>
+          <label>Check-in Date <b>*</b><input name="Check-in Date" type="date" required></label>
+          <label>Check-out Date <b>*</b><input name="Check-out Date" type="date" required></label>
+          <label>Number of Pax <b>*</b><select name="Number of Pax" id="hotel-pax" class="pax-select" required><option value="">Select Number of Passengers</option></select></label>
+        </div>
+        <div class="passenger-section">
+          <div class="passenger-title">♟ &nbsp; Passenger Name(s) <b>*</b></div>
+          <div class="passenger-labels"><span>Title</span><span>Given Name</span><span>Surname</span></div>
+          <div id="passenger-list"></div>
+        </div>
+        <label class="full-field additional-field">Additional Details<textarea name="Additional Details" rows="3" placeholder="Any special request..."></textarea></label>
+        <button class="submit" type="submit">➤ &nbsp; Send Request on WhatsApp</button>
+      </form>
+    </section>
   </section>
 </main>
-<footer>RTS TOURS &amp; TRAVELS · WhatsApp +91 93266 85517</footer>
+
+<datalist id="airport-codes">
+  <option value="BOM"><option value="DEL"><option value="DXB"><option value="JED"><option value="RUH"><option value="DOH"><option value="MCT"><option value="KWI"><option value="AUH"><option value="DMM"><option value="HYD"><option value="MAA"><option value="BLR"><option value="COK"><option value="TRV">
+</datalist>
+<footer class="site-footer">Travel Services <span>·</span> Request assistance on WhatsApp</footer>
 <script src="script.js"></script>
 </body>
 </html>

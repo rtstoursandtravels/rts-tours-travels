@@ -70,26 +70,54 @@
   const WHATSAPP_NUMBER = '919326685517';
   function formDataLines(form, serviceName) {
     const data = new FormData(form);
+    const value = name => String(data.get(name) || '').trim();
 
-    // Airport / Immigration: send only the exact fields requested.
-    // No heading, duplicated REQUEST text, additional-details line, or disclaimer.
+    // Keep WhatsApp output limited to the form details. No extra heading or disclaimer.
     if (form.id === 'travel-form') {
       return [
         'Service: Airport / Immigration Dummy Ticket',
-        `Departure Sector: ${String(data.get('Departure Sector') || '').trim()}`,
-        `Arrival Sector: ${String(data.get('Arrival Sector') || '').trim()}`,
-        `Number of Pax: ${String(data.get('Number of Pax') || '').trim()}`,
-        `Date of Travel: ${String(data.get('Date of Travel') || '').trim()}`,
-        `WhatsApp Number: ${String(data.get('WhatsApp Number') || '').trim()}`
+        `Departure Sector: ${value('Departure Sector')}`,
+        `Arrival Sector: ${value('Arrival Sector')}`,
+        `Number of Pax: ${value('Number of Pax')}`,
+        `Date of Travel: ${value('Date of Travel')}`,
+        `WhatsApp Number: ${value('WhatsApp Number')}`
       ];
     }
 
-    const lines = [`NEW ${serviceName.toUpperCase()} REQUEST`, `Service: ${serviceName}`];
-    for (const [key, value] of data.entries()) {
-      if (String(value).trim()) lines.push(`${key}: ${String(value).trim()}`);
+    if (form.id === 'visa-form') {
+      return [
+        'Service: Visa / Office Purpose Dummy Ticket Request',
+        `Departure Sector: ${value('Departure Sector')}`,
+        `Arrival Sector: ${value('Arrival Sector')}`,
+        `Number of Pax: ${value('Number of Pax')}`,
+        `Date of Travel: ${value('Date of Travel')}`,
+        ...(value('Additional Details') ? [`Additional Details: ${value('Additional Details')}`] : [])
+      ];
     }
-    lines.push('', 'Please confirm the available genuine, verifiable itinerary or reservation and applicable details. This is a request only, not a confirmed booking.');
-    return lines;
+
+    if (form.id === 'hotel-form') {
+      const lines = [
+        'Service: Hotel Booking',
+        `Country Name: ${value('Country Name')}`,
+        `City: ${value('City')}`,
+        `Check-in Date: ${value('Check-in Date')}`,
+        `Check-out Date: ${value('Check-out Date')}`,
+        `Number of Pax: ${value('Number of Pax')}`
+      ];
+      const pax = Math.max(1, Math.min(20, Number(value('Number of Pax')) || 1));
+      for (let i = 1; i <= pax; i++) {
+        const title = value(`Passenger ${i} Title`);
+        const given = value(`Passenger ${i} Given Name`);
+        const surname = value(`Passenger ${i} Surname`);
+        lines.push(`Passenger ${i}: ${[title, given, surname].filter(Boolean).join(' ')}`);
+      }
+      if (value('Additional Details')) lines.push(`Additional Details: ${value('Additional Details')}`);
+      return lines;
+    }
+
+    return [`Service: ${serviceName}`, ...[...data.entries()]
+      .filter(([, v]) => String(v).trim())
+      .map(([k, v]) => `${k}: ${String(v).trim()}`)];
   }
   function sendToWhatsApp(form, serviceName) {
     if (!form.reportValidity()) return;

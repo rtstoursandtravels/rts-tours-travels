@@ -69,6 +69,18 @@
 
   const WHATSAPP_NUMBER = '919326685517';
   function formDataLines(form, serviceName) {
+    // Visa / office-purpose WhatsApp message: send the request details only.
+    // Do not append the extra confirmation/disclaimer paragraph.
+    if (form.id === 'visa-form') {
+      const data = new FormData(form);
+      const lines = ['Service: Visa / Office Purpose Dummy Ticket Request'];
+      for (const key of ['Departure Sector', 'Arrival Sector', 'Number of Pax', 'Date of Travel', 'Additional Details']) {
+        const value = String(data.get(key) || '').trim();
+        if (value) lines.push(`${key}: ${value}`);
+      }
+      return lines;
+    }
+
     const data = new FormData(form);
     const lines = [`NEW ${serviceName.toUpperCase()} REQUEST`, `Service: ${serviceName}`];
     for (const [key, value] of data.entries()) {

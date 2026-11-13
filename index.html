@@ -16,38 +16,52 @@
 
 <main id="app">
   <section class="page active" id="home" aria-label="Our Travel Services">
-    <div class="hero home-hero">
-      <div class="hero-copy">
-        <span class="eyebrow">SIMPLE · QUICK · ONLINE</span>
+    <div class="home-frame">
+      <div class="home-corner home-corner-top" aria-hidden="true"></div>
+      <div class="home-heading">
+        <div class="home-brand-mark" aria-hidden="true"><span>✈</span><b>TRAVEL<br>SERVICES</b></div>
         <h1>Our Travel <em>Services</em></h1>
+        <div class="heading-swoosh" aria-hidden="true"></div>
         <p>Choose a service and send your request.</p>
       </div>
-      <div class="hero-visual"><span>✈</span><span>☁</span><span>🧳</span></div>
-    </div>
 
-    <section class="content-wrap">
-      <div class="section-heading"><span>Explore Services</span><small>Tap a service to continue</small></div>
       <div class="service-grid">
         <button class="service-card" data-go="purpose" type="button">
-          <span class="service-icon ticket-icon">✈</span>
+          <span class="service-art ticket-art" aria-hidden="true"><span class="ticket-shape">✈<small>FLIGHT TICKET</small></span></span>
           <span class="service-name">Dummy Ticket / Return Cancellation Ticket</span>
-          <span class="starting">STARTING FROM</span><strong class="price">₹299</strong>
-          <span class="card-link">Choose purpose <b>→</b></span>
+          <span class="service-subtitle">Travel &amp; office purpose</span>
+          <span class="service-price">Starting from ₹299</span>
         </button>
         <button class="service-card" data-go="hotel" type="button">
-          <span class="service-icon hotel-icon">▦</span>
+          <span class="service-art hotel-art" aria-hidden="true"><span class="hotel-building"><i>HOTEL</i><b>▥ ▥ ▥</b><b>▥ ▥ ▥</b></span><span class="hotel-pin">⌖</span></span>
           <span class="service-name">Hotel Booking</span>
-          <span class="starting">STARTING FROM</span><strong class="price">₹149</strong>
-          <span class="card-link">Book hotel <b>→</b></span>
+          <span class="service-subtitle">Hotel reservation request</span>
+          <span class="service-price">Starting from ₹149</span>
         </button>
         <div class="service-card disabled-card" aria-disabled="true">
-          <span class="service-icon bag-icon">🧳</span>
-          <span class="service-name">Other Travel Services</span>
+          <span class="service-art bag-art" aria-hidden="true"><span class="suitcase blue-case"></span><span class="suitcase orange-case"></span><span class="mini-plane">✈</span></span>
           <span class="coming">Coming Soon</span>
+          <span class="service-name">Holiday Packages</span>
+        </div>
+        <div class="service-card disabled-card" aria-disabled="true">
+          <span class="service-art visa-art" aria-hidden="true"><span class="passport">◎<small>PASSPORT</small></span><span class="visa-sheet">VISA<br>✓　✓　✓</span></span>
+          <span class="coming">Coming Soon</span>
+          <span class="service-name">Visa Assistance</span>
+        </div>
+        <div class="service-card disabled-card" aria-disabled="true">
+          <span class="service-art umrah-art" aria-hidden="true"><span class="kaaba"><i></i><b>✦</b></span></span>
+          <span class="coming">Coming Soon</span>
+          <span class="service-name">Umrah Packages</span>
+        </div>
+        <div class="service-card disabled-card" aria-disabled="true">
+          <span class="service-art transfer-art" aria-hidden="true"><span class="airport-tower">▥</span><span class="airport-sign">AIRPORT</span><span class="transfer-car">🚘</span></span>
+          <span class="coming">Coming Soon</span>
+          <span class="service-name">Airport Transfers</span>
         </div>
       </div>
-      <p class="note">Prices are starting rates and may vary by route, date and service requirements.</p>
-    </section>
+      <div class="home-web-strip"><span>◎</span> Travel services made simple</div>
+      <div class="home-corner home-corner-bottom" aria-hidden="true"></div>
+    </div>
   </section>
 
   <section class="page" id="purpose" aria-label="Choose dummy ticket purpose">
